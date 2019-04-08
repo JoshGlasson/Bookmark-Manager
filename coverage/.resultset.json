@@ -20,6 +20,14 @@
         1,
         null,
         null,
+        null,
+        1,
+        1,
+        1,
+        null,
+        1,
+        null,
+        null,
         null
       ],
       "/Users/joshglasson/projects/bookmarks/spec/features/creating_bookmarks_spec.rb": [
@@ -62,6 +70,6 @@
         null
       ]
     },
-    "timestamp": 1554733130
+    "timestamp": 1554733231
   }
 }
