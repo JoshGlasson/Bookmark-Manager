@@ -2,6 +2,9 @@ require 'bookmark'
 require 'database_helpers'
 
 describe Bookmark do
+  let(:comment_class) { double(:comment_class) }
+  let(:tag_class) { double(:tag_class) }
+
   describe '.all' do
     it 'returns all bookmarks' do
       connection = PG.connect(dbname: 'bookmark_manager_test')
@@ -71,13 +74,22 @@ describe Bookmark do
       expect(result.url).to eq 'http://www.makersacademy.com'
     end
   end
-let(:comment_class) { double(:comment_class) }
+
   describe '#comments' do
     it 'calls .where on the Comment class' do
-    bookmark = Bookmark.create(title: 'Makers Academy', url: 'http://www.makersacademy.com')
-    expect(comment_class).to receive(:where).with(bookmark_id: bookmark.id)
+      bookmark = Bookmark.create(title: 'Makers Academy', url: 'http://www.makersacademy.com')
+      expect(comment_class).to receive(:where).with(bookmark_id: bookmark.id)
 
-    bookmark.comments(comment_class)
+      bookmark.comments(comment_class)
+    end
   end
+
+  describe '#tags' do
+    it 'calls .where on the Tag class' do
+     bookmark = Bookmark.create(title: 'Makers Academy', url: 'http://www.makersacademy.com')
+     expect(tag_class).to receive(:where).with(bookmark_id: bookmark.id)
+     
+     bookmark.tags(tag_class)
+    end
   end
 end
