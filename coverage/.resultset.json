@@ -265,6 +265,20 @@
         1,
         1,
         null,
+        null,
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        null,
+        1,
+        1,
+        null,
         null
       ],
       "/Users/joshglasson/projects/bookmarks/spec/features/creating_bookmarks_spec.rb": [
@@ -538,6 +552,6 @@
         null
       ]
     },
-    "timestamp": 1554825982
+    "timestamp": 1554826400
   }
 }
