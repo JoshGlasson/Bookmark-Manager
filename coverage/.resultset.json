@@ -45,6 +45,31 @@
         1,
         null,
         null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null,
+        1,
+        1,
+        1,
+        null,
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
         null
       ],
       "/Users/joshglasson/projects/bookmarks/spec/database_helpers.rb": [
@@ -80,6 +105,26 @@
         null,
         null
       ],
+      "/Users/joshglasson/projects/bookmarks/spec/features/updating_a_bookmark_spec.rb": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null
+      ],
       "/Users/joshglasson/projects/bookmarks/spec/features/viewing_bookmarks_spec.rb": [
         1,
         null,
@@ -107,6 +152,6 @@
         null
       ]
     },
-    "timestamp": 1554796589
+    "timestamp": 1554796877
   }
 }
