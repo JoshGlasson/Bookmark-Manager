@@ -121,7 +121,7 @@
         1,
         null,
         1,
-        4,
+        5,
         null
       ],
       "/Users/joshglasson/projects/bookmarks/spec/bookmark_tag_spec.rb": [
@@ -259,6 +259,18 @@
         1,
         null,
         1,
+        1,
+        null,
+        null
+      ],
+      "/Users/joshglasson/projects/bookmarks/spec/features/registration_spec.rb": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
         1,
         null,
         null
@@ -427,8 +439,40 @@
         null,
         null,
         null
+      ],
+      "/Users/joshglasson/projects/bookmarks/spec/user_spec.rb": [
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        null
       ]
     },
-    "timestamp": 1554801917
+    "timestamp": 1554810484
   }
 }
