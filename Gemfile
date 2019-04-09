@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'sinatra'
 gem 'pg'
+gem 'sinatra-flash'
 
 group :test do
   gem 'capybara'
