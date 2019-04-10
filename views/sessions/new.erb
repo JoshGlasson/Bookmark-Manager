@@ -1,4 +1,57 @@
-<center><h1 style="font-size:80px;">
+<html>
+<head>
+<style>
+
+body {
+  background-color: powderblue
+}
+
+.list {
+  list-style-type: none;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  font-size: 20px;
+  width: 800px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li a {
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  color: white;
+  background-color: #111;
+}
+
+.active {
+  background-color: #4CAF50;
+}
+</style>
+</head>
+
+<body><center>
+  <ul>
+    <li><a style="float: left;color:white" href="/">Home</a></li>
+    <li><a style="float: left;color:white" href="/bookmarks">Bookmarks</a></li>
+    <li><form action="/sessions/destroy" method="post">
+      <button style="float:right; background-color: #4CAF50" type="submit" value="Sign Out">Sign Out</button>
+    </form></li>
+  </ul>
+
+<h1 style="font-size:80px;">
 Sign in to your account
 </h1>
 <h1>
@@ -16,3 +69,5 @@ Sign in to your account
 </form>
 </h2>
 </center>
+
+</body></html>
