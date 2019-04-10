@@ -19,6 +19,11 @@ class Comment
     end
   end
 
+
+  def self.delete(id:)
+    DatabaseConnection.query("DELETE FROM comments WHERE bookmark_id = #{id};")
+  end
+
   attr_reader :id, :text, :bookmark_id
 
   def initialize(id:, text:, bookmark_id:)

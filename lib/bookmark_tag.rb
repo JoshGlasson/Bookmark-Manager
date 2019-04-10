@@ -6,6 +6,11 @@ class BookmarkTag
     BookmarkTag.new(bookmark_id: result[0]['bookmark_id'], tag_id: result[0]['tag_id'])
   end
 
+
+  def self.delete(id:)
+    DatabaseConnection.query("DELETE FROM bookmarks_tags WHERE bookmark_id = #{id};")
+  end
+
   attr_reader :bookmark_id, :tag_id
 
   def initialize(bookmark_id:, tag_id:)
