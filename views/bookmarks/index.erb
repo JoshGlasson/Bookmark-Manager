@@ -1,11 +1,10 @@
 <body><center>
-<h1 style="font-size:70px">Bookmarks</h1>
 <% if @user %>
+<h1 style="font-size:70px">Bookmarks</h1>
   <h1>Welcome, <%= @user.email %></h1>
   <form action="/sessions/destroy" method="post">
     <input type="submit" value="Sign out" />
   </form>
-<% end %>
 <h2>
   <%= flash[:notice] %>
 </h2>
@@ -57,4 +56,15 @@
 <form action="/bookmarks/new">
   <button type="submit" value="AddBookmark" style="text-align:center; width:300px; font-size:30px;">Add a Bookmark</button>
 </form>
+
+<% else %>
+
+<h1>Please sign in</h1>
+<form action="/sessions/new">
+  <button type="submit" value="Sign In" style="text-align:center; width:300px; font-size:30px;">Sign In</button>
+</form>
+<form action="/users/new">
+  <button type="submit" value="Sign Up" style="text-align:center; width:300px; font-size:30px;">Sign Up</button>
+</form>
+<% end %>
 </body></center>

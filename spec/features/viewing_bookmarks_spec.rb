@@ -11,10 +11,7 @@ feature 'Viewing bookmarks' do
 
     scenario 'links to bookmarks page' do
       visit '/'
-      click_button 'Sign Up'
-      fill_in(:email, with: 'test@example.com')
-      fill_in(:password, with: 'password123')
-      click_button 'Submit'
+      sign_up
 
       click_button 'Bookmarks'
 
@@ -26,7 +23,7 @@ feature 'Viewing bookmarks' do
     Bookmark.create(url: 'http://www.makersacademy.com', title: 'Makers Academy')
     Bookmark.create(url: 'http://www.destroyallsoftware.com', title: 'Destroy All Software')
     Bookmark.create(url: 'http://www.google.com', title: 'Google')
-
+    sign_up
     visit '/bookmarks'
 
     expect(page).to have_link('Makers Academy', href: 'http://www.makersacademy.com')

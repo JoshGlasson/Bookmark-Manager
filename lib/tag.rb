@@ -22,9 +22,6 @@ class Tag
     Tag.new(id: result[0]['id'], content: result[0]['content'])
   end
 
-  def self.delete(id:)
-    DatabaseConnection.query("DELETE FROM bookmarks_tags WHERE bookmark_id = #{id};")
-  end
 
   attr_reader :id, :content
 

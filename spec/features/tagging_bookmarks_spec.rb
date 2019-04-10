@@ -2,7 +2,7 @@ feature 'Adding and viewing tags' do
   feature 'a user can add and then view a tag' do
     scenario 'a comment is added to a bookmark' do
       bookmark = Bookmark.create(url: 'http://www.makersacademy.com', title: 'Makers Academy')
-
+      sign_up
       visit '/bookmarks'
       first('.bookmark').click_button 'Add Tag'
 
@@ -21,7 +21,7 @@ feature 'Adding and viewing tags' do
       Bookmark.create(url: 'http://www.makersacademy.com', title: 'Makers Academy')
       Bookmark.create(url: 'http://www.destroyallsoftware.com', title: 'Destroy All Software')
       Bookmark.create(url: 'http://www.google.com', title: 'Google')
-
+      sign_up
       visit('/bookmarks')
 
       within page.find('.bookmark:nth-of-type(1)') do
