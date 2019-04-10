@@ -1,61 +1,108 @@
+<html>
+<head>
+<style>
+
+body {
+  background-color: powderblue
+}
+
+.list {
+  list-style-type: none;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  font-size: 20px;
+  width: 800px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li a {
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  color: white;
+  background-color: #111;
+}
+
+.active {
+  background-color: #4CAF50;
+}
+</style>
+</head>
+
 <body><center>
+
+<ul>
+  <li><a style="float: left;color:white" href="/">Home</a></li>
+  <li><a style="float: left;color:white" class="active" href="/bookmarks">Bookmarks</a></li>
+  <li><form action="/sessions/destroy" method="post">
+    <button style="float:right; background-color: #4CAF50" type="submit" value="Sign Out">Sign Out</button>
+  </form></li>
+</ul>
+
+
 <% if @user %>
 <h1 style="font-size:70px">Bookmarks</h1>
-  <h1>Welcome, <%= @user.email %></h1>
-  <form action="/sessions/destroy" method="post">
-    <input type="submit" value="Sign out" />
-  </form>
+  <h1 style="font-size:50px">Welcome, <%= @user.email %></h1>
 <h2>
   <%= flash[:notice] %>
 </h2>
 
-<ul style="list-style:none; font-size:30px">
+<form action="/bookmarks/new">
+  <button type="submit" value="AddBookmark" style="text-align:center; width:200px; font-size:20px;">Add a Bookmark</button>
+</form>
+
+<ol class="list"><div style="border-style: solid; display:inline-block;">
   <% @bookmarks.each do |bookmark| %>
-    <li class="bookmark" id="bookmark-<%= bookmark.id %>">
-      <a href="<%= bookmark.url %>" target="_blank">
+    <div style="background-color:#FFFFE0;"><li class="bookmark" id="bookmark-<%= bookmark.id %>">
+      <a style="font-size:30px" href="<%= bookmark.url %>" target="_blank">
         <%= bookmark.title %>
       </a>
-      <form action="/bookmarks/<%= bookmark.id %>" method="post">
+      <div style="display:inline-block;"><form action="/bookmarks/<%= bookmark.id %>" method="post">
         <input type='hidden' name='_method' value='DELETE'/>
         <input type="submit" value="Delete" />
-      </form>
-      <form action="/bookmarks/<%= bookmark.id %>/edit" method="get">
+      </form></div>
+      <div style="display:inline-block;"><form action="/bookmarks/<%= bookmark.id %>/edit" method="get">
         <input type="submit" value="Edit" />
-      </form>
-      <form action="/bookmarks/<%= bookmark.id %>/comments/new" method="get">
+      </form></div>
+      <div style="display:inline-block;"><form action="/bookmarks/<%= bookmark.id %>/comments/new" method="get">
         <input type="submit" value="Add Comment" />
-      </form>
-      <form action="/bookmarks/<%= bookmark.id %>/tags/new" method="get">
+      </form></div>
+      <div style="display:inline-block;"><form action="/bookmarks/<%= bookmark.id %>/tags/new" method="get">
         <input type="submit" value="Add Tag" />
-      </form>
-      <div>
-        <h2>Comments</h2>
-        <ul>
+      </form></div>
+      <div style="background-color:white;border-bottom-style: solid;">
+        <h2 style="font-size:20px">Comments</h2>
+        <ol class="list">
           <% bookmark.comments.each do |comment| %>
             <li><%= comment.text %></li>
           <% end %>
-        </ul>
-      </div>
-      <% if bookmark.tags.length > 0 %>
-        <div>
-          <h2>Tags</h2>
-          <ul>
-            <% bookmark.tags.each do |tag| %>
+        </ol>
+          <h2 style="font-size:20px">Tags</h2>
+          <ol class="list"> <% bookmark.tags.each do |tag| %>
               <li>
                 <a href="/tags/<%= tag.id %>/bookmarks">
                   <%= tag.content %>
                 </a>
               </li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
+              <% end %>
+          </ol>
+          </div>
     </li>
   <% end %>
-</ul>
-<form action="/bookmarks/new">
-  <button type="submit" value="AddBookmark" style="text-align:center; width:300px; font-size:30px;">Add a Bookmark</button>
-</form>
+</div></ol>
 
 <% else %>
 
@@ -67,4 +114,5 @@
   <button type="submit" value="Sign Up" style="text-align:center; width:300px; font-size:30px;">Sign Up</button>
 </form>
 <% end %>
-</body></center>
+</center></body>
+</html>

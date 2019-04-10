@@ -1,9 +1,114 @@
+<html>
+<head>
+<style>
+
+body {
+  background-color: powderblue
+}
+
+.list {
+  list-style-type: none;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  font-size: 20px;
+  width: 800px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li a {
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  color: white;
+  background-color: #111;
+}
+
+.active {
+  background-color: #4CAF50;
+}
+</style>
+</head>
+
+<body><center>
+
 <ul>
+  <li><a style="float: left;color:white" href="/">Home</a></li>
+  <li><a style="float: left;color:white" href="/bookmarks">Bookmarks</a></li>
+  <li><form action="/sessions/destroy" method="post">
+    <button style="float:right; background-color: #4CAF50" type="submit" value="Sign Out">Sign Out</button>
+  </form></li>
+</ul>
+
+
+<% if @user %>
+<h1 style="font-size:70px">Tagged: '<%= @tag.content %>'</h1>
+  <h1 style="font-size:50px">Welcome, <%= @user.email %></h1>
+<h2>
+  <%= flash[:notice] %>
+</h2>
+
+<ol class="list"><div style="border-style: solid; display:inline-block;">
   <% @tag.bookmarks.each do |bookmark| %>
-    <li>
-      <a href="<%= bookmark.url %>" target="_blank">
+    <div style="background-color:#FFFFE0;"><li class="bookmark" id="bookmark-<%= bookmark.id %>">
+      <a style="font-size:30px" href="<%= bookmark.url %>" target="_blank">
         <%= bookmark.title %>
       </a>
+      <div style="display:inline-block;"><form action="/bookmarks/<%= bookmark.id %>" method="post">
+        <input type='hidden' name='_method' value='DELETE'/>
+        <input type="submit" value="Delete" />
+      </form></div>
+      <div style="display:inline-block;"><form action="/bookmarks/<%= bookmark.id %>/edit" method="get">
+        <input type="submit" value="Edit" />
+      </form></div>
+      <div style="display:inline-block;"><form action="/bookmarks/<%= bookmark.id %>/comments/new" method="get">
+        <input type="submit" value="Add Comment" />
+      </form></div>
+      <div style="display:inline-block;"><form action="/bookmarks/<%= bookmark.id %>/tags/new" method="get">
+        <input type="submit" value="Add Tag" />
+      </form></div>
+      <div style="background-color:white;border-bottom-style: solid;">
+        <h2 style="font-size:20px">Comments</h2>
+        <ol class="list">
+          <% bookmark.comments.each do |comment| %>
+            <li><%= comment.text %></li>
+          <% end %>
+        </ol>
+          <h2 style="font-size:20px">Tags</h2>
+          <ol class="list"> <% bookmark.tags.each do |tag| %>
+              <li>
+                <a href="/tags/<%= tag.id %>/bookmarks">
+                  <%= tag.content %>
+                </a>
+              </li>
+              <% end %>
+          </ol>
+          </div>
     </li>
   <% end %>
-</ul>
+</div></ol>
+
+<% else %>
+
+<h1>Please sign in</h1>
+<form action="/sessions/new">
+  <button type="submit" value="Sign In" style="text-align:center; width:300px; font-size:30px;">Sign In</button>
+</form>
+<form action="/users/new">
+  <button type="submit" value="Sign Up" style="text-align:center; width:300px; font-size:30px;">Sign Up</button>
+</form>
+<% end %>
+</center></body>
+</html>

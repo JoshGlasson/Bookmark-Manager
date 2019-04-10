@@ -233,11 +233,11 @@
       ],
       "/Users/joshglasson/projects/bookmarks/spec/features/web_helper.rb": [
         1,
-        9,
-        9,
-        9,
-        9,
-        9,
+        10,
+        10,
+        10,
+        10,
+        10,
         null
       ],
       "/Users/joshglasson/projects/bookmarks/spec/features/authentication_spec.rb": [
@@ -280,8 +280,6 @@
         1,
         1,
         null,
-        1,
-        1,
         1,
         1,
         null,
@@ -365,6 +363,7 @@
         1,
         1,
         1,
+        null,
         1,
         1,
         null,
@@ -576,6 +575,6 @@
         null
       ]
     },
-    "timestamp": 1554905381
+    "timestamp": 1554911327
   }
 }

@@ -71,6 +71,7 @@ class BookmarkManager < Sinatra::Base
 
   get '/tags/:id/bookmarks' do
     @tag = Tag.find(id: params['id'])
+    @user = User.find(id: session[:user_id])
     erb :'tags/index'
   end
 

@@ -21,16 +21,17 @@ feature 'Adding and viewing tags' do
       Bookmark.create(url: 'http://www.makersacademy.com', title: 'Makers Academy')
       Bookmark.create(url: 'http://www.destroyallsoftware.com', title: 'Destroy All Software')
       Bookmark.create(url: 'http://www.google.com', title: 'Google')
+
       sign_up
       visit('/bookmarks')
 
-      within page.find('.bookmark:nth-of-type(1)') do
+      within page.first('.bookmark') do
         click_button 'Add Tag'
       end
       fill_in 'tag', with: 'testing'
       click_button 'Submit'
 
-      within page.find('.bookmark:nth-of-type(2)') do
+      within page.all('.bookmark').last do
         click_button 'Add Tag'
       end
       fill_in 'tag', with: 'testing'
@@ -39,8 +40,8 @@ feature 'Adding and viewing tags' do
       first('.bookmark').click_link 'testing'
 
       expect(page).to have_link 'Makers Academy', href: 'http://www.makersacademy.com'
-      expect(page).to have_link 'Destroy All Software',  href: 'http://www.destroyallsoftware.com'
-      expect(page).not_to have_link 'Google', href: 'http://www.google.com'
+      expect(page).not_to have_link 'Destroy All Software',  href: 'http://www.destroyallsoftware.com'
+      expect(page).to have_link 'Google', href: 'http://www.google.com'
     end
   end
 end
