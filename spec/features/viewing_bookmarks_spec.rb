@@ -8,6 +8,13 @@ feature 'Viewing bookmarks' do
 
       expect(page).to have_content 'Bookmark Manager'
     end
+
+    scenario 'links to bookmarks page' do
+      visit '/'
+      click_button "Bookmarks"
+
+      expect(page).to have_content 'Bookmarks'
+    end
   end
 
   scenario 'bookmarks are visible' do

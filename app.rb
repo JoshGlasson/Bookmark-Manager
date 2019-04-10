@@ -12,7 +12,7 @@ class BookmarkManager < Sinatra::Base
   register Sinatra::Flash
 
   get '/' do
-    'Bookmark Manager'
+    erb :'bookmarks/home'
   end
 
   get '/bookmarks' do
