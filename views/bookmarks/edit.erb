@@ -1,6 +1,65 @@
+<html>
+<head>
+<style>
+
+body {
+  background-color: powderblue
+}
+
+.list {
+  list-style-type: none;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  font-size: 20px;
+  width: 800px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li a {
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  color: white;
+  background-color: #111;
+}
+
+.active {
+  background-color: #4CAF50;
+}
+</style>
+</head>
+
+<body><center>
+  <ul>
+    <li><a style="float: left;color:white" href="/">Home</a></li>
+    <li><a style="float: left;color:white" href="/bookmarks">Bookmarks</a></li>
+    <li><form action="/sessions/destroy" method="post">
+      <button style="float:right; background-color: #4CAF50" type="submit" value="Sign Out">Sign Out</button>
+    </form></li>
+  </ul>
+
+<h1 style="font-size:80px;">
+Edit Bookmark
+</h1>
+
 <form action="/bookmarks/<%= @bookmark.id %>" method="post">
   <input type="hidden" name="_method" value="PATCH" />
-  <input type="text" name="url" value="<%= @bookmark.url %>" />
-  <input type="text" name="title" value="<%= @bookmark.title %>" />
-  <input type="submit" value="Submit" />
+  <input name="url" type="text" placeholder="URL" style="font-size:20px; width:500px; height:50px; text-align:center" value="<%= @bookmark.url %>"/>
+  <input name="title" type="text" placeholder="Title" style="font-size:20px; width:500px; height:50px; text-align:center" value="<%= @bookmark.title %>" />
+  <button name="submit" type="submit" value="Submit" style="text-align:center; width:300px; font-size:30px;">Submit</button>
 </form>
+
+</center></body></html>
