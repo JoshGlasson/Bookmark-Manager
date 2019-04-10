@@ -1,5 +1,22 @@
-<h1>Bookmark Manager</h1>
-
-<form action="/bookmarks">
-  <input type="submit" value="Bookmarks" />
+<body><center>
+<h1 style="font-size:100px;">Bookmark Manager</h1>
+<% if @user %>
+<h1>Welcome, <%= @user.email %></h1>
+<form action="/sessions/destroy" method="post">
+  <button type="submit" value="Sign Out" style="text-align:center; width:300px; font-size:30px;">Sign Out</button>
 </form>
+<form action="/bookmarks">
+  <button type="submit" value="Bookmarks" style="text-align:center; width:300px; font-size:30px;">Bookmarks</button>
+</form>
+<% else %>
+<form action="/sessions/new">
+  <button type="submit" value="Sign In" style="text-align:center; width:300px; font-size:30px;">Sign In</button>
+</form>
+<form action="/users/new">
+  <button type="submit" value="Sign Up" style="text-align:center; width:300px; font-size:30px;">Sign Up</button>
+</form>
+<% end %>
+<h2>
+  <%= flash[:notice] %>
+</h2>
+</center></body>

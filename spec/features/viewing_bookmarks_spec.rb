@@ -11,7 +11,12 @@ feature 'Viewing bookmarks' do
 
     scenario 'links to bookmarks page' do
       visit '/'
-      click_button "Bookmarks"
+      click_button 'Sign Up'
+      fill_in(:email, with: 'test@example.com')
+      fill_in(:password, with: 'password123')
+      click_button 'Submit'
+
+      click_button 'Bookmarks'
 
       expect(page).to have_content 'Bookmarks'
     end
