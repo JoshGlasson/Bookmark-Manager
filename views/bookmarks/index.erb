@@ -1,11 +1,16 @@
-<h1>Bookmarks</h1>
+<body><center>
+<h1 style="font-size:70px">Bookmarks</h1>
 <% if @user %>
   <h1>Welcome, <%= @user.email %></h1>
   <form action="/sessions/destroy" method="post">
     <input type="submit" value="Sign out" />
   </form>
 <% end %>
-<ul>
+<h2>
+  <%= flash[:notice] %>
+</h2>
+
+<ul style="list-style:none; font-size:30px">
   <% @bookmarks.each do |bookmark| %>
     <li class="bookmark" id="bookmark-<%= bookmark.id %>">
       <a href="<%= bookmark.url %>" target="_blank">
@@ -49,6 +54,4 @@
     </li>
   <% end %>
 </ul>
-<p>
-  <%= flash[:notice] %>
-</p>
+</body></center>
