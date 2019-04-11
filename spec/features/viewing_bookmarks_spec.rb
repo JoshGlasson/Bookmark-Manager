@@ -31,4 +31,18 @@ feature 'Viewing bookmarks' do
     expect(page).to have_link('Destroy All Software',  href: 'http://www.destroyallsoftware.com')
     expect(page).to have_link('Google', href: 'http://www.google.com')
   end
+
+  scenario 'a user can only see bookmarks they have added' do
+    Bookmark.create(url: 'https://joshlearningto.code.blog/', title: 'Joshs Blog', user_id: 0)
+    sign_up
+    visit '/bookmarks'
+    add_bookmark_makers
+    add_bookmark_das
+    add_bookmark_google
+
+    expect(page).to have_link('Makers Academy', href: 'http://www.makersacademy.com')
+    expect(page).to have_link('Destroy All Software',  href: 'http://www.destroyallsoftware.com')
+    expect(page).to have_link('Google', href: 'http://www.google.com')
+    expect(page).not_to have_link('Joshs Blog', href: 'https://joshlearningto.code.blog/')
+  end
 end

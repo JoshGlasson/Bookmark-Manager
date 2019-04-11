@@ -45,4 +45,10 @@ feature 'authentication' do
     expect(page).not_to have_content 'Welcome, test@example.com'
     expect(page).to have_content 'You have signed out.'
   end
+
+  scenario 'a user has to be signed in to view bookmarks' do
+    visit '/'
+    click_link 'Bookmarks'
+    expect(page).to have_content 'Please sign in'
+  end
 end
