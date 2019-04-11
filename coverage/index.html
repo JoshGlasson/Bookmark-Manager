@@ -14,7 +14,7 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2019-04-11T16:45:44+01:00">2019-04-11T16:45:44+01:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2019-04-11T17:28:25+01:00">2019-04-11T17:28:25+01:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -651,7 +651,7 @@
         <li class="covered" data-hits="1" data-linenumber="69">
           <span class="hits">1</span>
           
-          <code class="ruby">      result = Bookmark.find(id: bookmark.id)</code>
+          <code class="ruby">      result = Bookmark.find(id: bookmark.id, user_id: 1)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="70">
@@ -777,7 +777,7 @@
         <li class="covered" data-hits="1" data-linenumber="90">
           <span class="hits">1</span>
           
-          <code class="ruby">     expect(tag_class).to receive(:where).with(bookmark_id: bookmark.id)</code>
+          <code class="ruby">     expect(tag_class).to receive(:where).with(bookmark_id: bookmark.id, user_id: 1)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="91">
@@ -831,13 +831,13 @@
         <li class="covered" data-hits="1" data-linenumber="99">
           <span class="hits">1</span>
           
-          <code class="ruby">      tag1 = Tag.create(content: &#39;test tag 1&#39;)</code>
+          <code class="ruby">      tag1 = Tag.create(content: &#39;test tag 1&#39;, user_id: 1)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="100">
           <span class="hits">1</span>
           
-          <code class="ruby">      tag2 = Tag.create(content: &#39;test tag 2&#39;)</code>
+          <code class="ruby">      tag2 = Tag.create(content: &#39;test tag 2&#39;, user_id: 1)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="101">
@@ -861,7 +861,7 @@
         <li class="covered" data-hits="1" data-linenumber="104">
           <span class="hits">1</span>
           
-          <code class="ruby">      bookmarks = Bookmark.where(tag_id: tag1.id)</code>
+          <code class="ruby">      bookmarks = Bookmark.where(tag_id: tag1.id,  user_id: 1)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="105">
@@ -982,7 +982,7 @@
         <li class="covered" data-hits="1" data-linenumber="7">
           <span class="hits">1</span>
           
-          <code class="ruby">      tag = Tag.create(content: &#39;test tag&#39;)</code>
+          <code class="ruby">      tag = Tag.create(content: &#39;test tag&#39;, user_id: 1)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="8">
@@ -3413,7 +3413,7 @@
         <li class="covered" data-hits="1" data-linenumber="12">
           <span class="hits">1</span>
           
-          <code class="ruby">        tag = Tag.create(content: &#39;test tag&#39;)</code>
+          <code class="ruby">        tag = Tag.create(content: &#39;test tag&#39;, user_id: 1)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="13">
@@ -3479,13 +3479,13 @@
         <li class="covered" data-hits="1" data-linenumber="23">
           <span class="hits">1</span>
           
-          <code class="ruby">        tag1 = Tag.create(content: &#39;test tag&#39;)</code>
+          <code class="ruby">        tag1 = Tag.create(content: &#39;test tag&#39;, user_id: 1)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="24">
           <span class="hits">1</span>
           
-          <code class="ruby">        tag2 = Tag.create(content: &#39;test tag&#39;)</code>
+          <code class="ruby">        tag2 = Tag.create(content: &#39;test tag&#39;, user_id: 1)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="25">
@@ -3545,13 +3545,13 @@
         <li class="covered" data-hits="1" data-linenumber="34">
           <span class="hits">1</span>
           
-          <code class="ruby">      tag1 = Tag.create(content: &#39;test tag 1&#39;)</code>
+          <code class="ruby">      tag1 = Tag.create(content: &#39;test tag 1&#39;, user_id: 1)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="35">
           <span class="hits">1</span>
           
-          <code class="ruby">      tag2 = Tag.create(content: &#39;test tag 2&#39;)</code>
+          <code class="ruby">      tag2 = Tag.create(content: &#39;test tag 2&#39;, user_id: 1)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="36">
@@ -3575,7 +3575,7 @@
         <li class="covered" data-hits="1" data-linenumber="39">
           <span class="hits">1</span>
           
-          <code class="ruby">      tags = Tag.where(bookmark_id: bookmark.id)</code>
+          <code class="ruby">      tags = Tag.where(bookmark_id: bookmark.id, user_id: 1)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="40">
@@ -3647,7 +3647,7 @@
         <li class="covered" data-hits="1" data-linenumber="51">
           <span class="hits">1</span>
           
-          <code class="ruby">      tag = Tag.create(content: &#39;test tag&#39;)</code>
+          <code class="ruby">      tag = Tag.create(content: &#39;test tag&#39;, user_id: 1)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="52">
@@ -3659,7 +3659,7 @@
         <li class="covered" data-hits="1" data-linenumber="53">
           <span class="hits">1</span>
           
-          <code class="ruby">      result = Tag.find(id: tag.id)</code>
+          <code class="ruby">      result = Tag.find(id: tag.id, user_id: 1)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="54">
@@ -3713,7 +3713,7 @@
         <li class="covered" data-hits="1" data-linenumber="62">
           <span class="hits">1</span>
           
-          <code class="ruby">      tag = Tag.create(content: &#39;test tag&#39;)</code>
+          <code class="ruby">      tag = Tag.create(content: &#39;test tag&#39;, user_id: 1)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="63">
@@ -3725,7 +3725,7 @@
         <li class="covered" data-hits="1" data-linenumber="64">
           <span class="hits">1</span>
           
-          <code class="ruby">      expect(bookmark_class).to receive(:where).with(tag_id: tag.id)</code>
+          <code class="ruby">      expect(bookmark_class).to receive(:where).with(tag_id: tag.id,  user_id: 1)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="65">

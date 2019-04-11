@@ -66,7 +66,7 @@ describe Bookmark do
     it 'returns the requested bookmark object' do
       bookmark = Bookmark.create(title: 'Makers Academy', url: 'http://www.makersacademy.com', user_id: 1)
 
-      result = Bookmark.find(id: bookmark.id)
+      result = Bookmark.find(id: bookmark.id, user_id: 1)
 
       expect(result).to be_a Bookmark
       expect(result.id).to eq bookmark.id
@@ -87,7 +87,7 @@ describe Bookmark do
   describe '#tags' do
     it 'calls .where on the Tag class' do
      bookmark = Bookmark.create(title: 'Makers Academy', url: 'http://www.makersacademy.com', user_id: 1)
-     expect(tag_class).to receive(:where).with(bookmark_id: bookmark.id)
+     expect(tag_class).to receive(:where).with(bookmark_id: bookmark.id, user_id: 1)
 
      bookmark.tags(tag_class)
     end
@@ -96,12 +96,12 @@ describe Bookmark do
   describe '.where' do
     it 'returns bookmarks with the given tag id' do
       bookmark = Bookmark.create(url: "http://www.makersacademy.com", title: "Makers Academy", user_id: 1)
-      tag1 = Tag.create(content: 'test tag 1')
-      tag2 = Tag.create(content: 'test tag 2')
+      tag1 = Tag.create(content: 'test tag 1', user_id: 1)
+      tag2 = Tag.create(content: 'test tag 2', user_id: 1)
       BookmarkTag.create(bookmark_id: bookmark.id, tag_id: tag1.id)
       BookmarkTag.create(bookmark_id: bookmark.id, tag_id: tag2.id)
 
-      bookmarks = Bookmark.where(tag_id: tag1.id)
+      bookmarks = Bookmark.where(tag_id: tag1.id,  user_id: 1)
       result = bookmarks.first
 
       expect(bookmarks.length).to eq 1

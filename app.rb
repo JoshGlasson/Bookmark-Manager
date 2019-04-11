@@ -44,7 +44,7 @@ class BookmarkManager < Sinatra::Base
   end
 
   get '/bookmarks/:id/edit' do
-    @bookmark = Bookmark.find(id: params[:id])
+    @bookmark = Bookmark.find(id: params[:id], user_id: session[:user_id])
     erb :'bookmarks/edit'
   end
 
@@ -71,14 +71,14 @@ class BookmarkManager < Sinatra::Base
   end
 
   post '/bookmarks/:id/tags' do
-    tag = Tag.create(content: params[:tag])
+    tag = Tag.create(content: params[:tag], user_id: session[:user_id])
     BookmarkTag.create(bookmark_id: params[:id], tag_id: tag.id)
     flash[:notice] = 'Tag Added.'
     redirect '/bookmarks'
   end
 
   get '/tags/:id/bookmarks' do
-    @tag = Tag.find(id: params['id'])
+    @tag = Tag.find(id: params['id'], user_id: session[:user_id])
     @user = User.find(id: session[:user_id])
     erb :'tags/index'
   end

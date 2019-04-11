@@ -46,8 +46,8 @@ class Bookmark
     Bookmark.new(id: result[0]['id'], title: result[0]['title'], url: result[0]['url'], user_id: result[0]['user_id'])
   end
 
-  def self.find(id:)
-    result = DatabaseConnection.query("SELECT * FROM bookmarks WHERE id = #{id}")
+  def self.find(id:, user_id:)
+    result = DatabaseConnection.query("SELECT * FROM bookmarks WHERE id = #{id};")
     Bookmark.new(id: result[0]['id'], title: result[0]['title'], url: result[0]['url'], user_id: result[0]['user_id'])
   end
 
@@ -56,13 +56,13 @@ class Bookmark
   end
 
   def tags(tag_class = Tag)
-    tag_class.where(bookmark_id: id)
+    tag_class.where(bookmark_id: id, user_id: user_id.to_i)
   end
 
-  def self.where(tag_id:)
+  def self.where(tag_id:, user_id:)
     result = DatabaseConnection.query("SELECT id, title, url FROM bookmarks_tags INNER JOIN bookmarks ON bookmarks.id = bookmarks_tags.bookmark_id WHERE bookmarks_tags.tag_id = '#{tag_id}';")
     result.map do |bookmark|
-      Bookmark.new(id: bookmark['id'], title: bookmark['title'], url: bookmark['url'], user_id: result[0]['user_id'])
+      Bookmark.find(id: bookmark['id'], user_id: user_id)
     end
   end
 
