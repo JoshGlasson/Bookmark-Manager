@@ -48,9 +48,11 @@ li a:hover:not(.active) {
 <ul>
   <li><a style="color:white; float:left" class="active" href="/">Home</a></li>
   <li><a style="color:white; float:left" href="/bookmarks">Bookmarks</a></li>
+  <% if @user %>
   <li><form action="/sessions/destroy" method="post">
     <button style="float:right;background-color: #4CAF50" type="submit" value="Sign Out">Sign Out</button>
   </form></li>
+  <% end %>
 </ul>
 
 <h1 style="font-size:100px;">Bookmark Manager</h1>
