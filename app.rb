@@ -28,6 +28,7 @@ class BookmarkManager < Sinatra::Base
 
   post '/bookmarks' do
     flash[:notice] = "You must submit a valid URL." unless Bookmark.create(url: params[:url], title: params[:title])
+    flash[:notice] = 'Bookmark Added.'
     redirect '/bookmarks'
   end
 
@@ -35,6 +36,7 @@ class BookmarkManager < Sinatra::Base
     BookmarkTag.delete(id: params[:id])
     Comment.delete(id: params[:id])
     Bookmark.delete(id: params[:id])
+    flash[:notice] = 'Bookmark Deleted.'
     redirect '/bookmarks'
   end
 
@@ -45,6 +47,7 @@ class BookmarkManager < Sinatra::Base
 
   patch '/bookmarks/:id' do
     Bookmark.update(id: params[:id], title: params[:title], url: params[:url])
+    flash[:notice] = 'Bookmark Changed.'
     redirect '/bookmarks'
   end
 
@@ -55,6 +58,7 @@ class BookmarkManager < Sinatra::Base
 
   post '/bookmarks/:id/comments' do
     Comment.create(text: params[:comment], bookmark_id: params[:id])
+    flash[:notice] = 'Comment Added.'
     redirect '/bookmarks'
   end
 
@@ -66,6 +70,7 @@ class BookmarkManager < Sinatra::Base
   post '/bookmarks/:id/tags' do
     tag = Tag.create(content: params[:tag])
     BookmarkTag.create(bookmark_id: params[:id], tag_id: tag.id)
+    flash[:notice] = 'Tag Added.'
     redirect '/bookmarks'
   end
 
