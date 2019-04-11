@@ -1,12 +1,10 @@
 feature 'Adding and viewing tags' do
   feature 'a user can add and then view a tag' do
     scenario 'a comment is added to a bookmark' do
-      bookmark = Bookmark.create(url: 'http://www.makersacademy.com', title: 'Makers Academy')
       sign_up
       visit '/bookmarks'
+      add_bookmark_makers
       first('.bookmark').click_button 'Add Tag'
-
-      expect(current_path).to eq "/bookmarks/#{bookmark.id}/tags/new"
 
       fill_in 'tag', with: 'test tag'
       click_button 'Submit'
@@ -18,12 +16,12 @@ feature 'Adding and viewing tags' do
 
   feature 'a user can filter bookmarks by tag' do
     scenario 'adding the same tag to multiple bookmarks then filtering by tag' do
-      Bookmark.create(url: 'http://www.makersacademy.com', title: 'Makers Academy')
-      Bookmark.create(url: 'http://www.destroyallsoftware.com', title: 'Destroy All Software')
-      Bookmark.create(url: 'http://www.google.com', title: 'Google')
 
       sign_up
       visit('/bookmarks')
+      add_bookmark_makers
+      add_bookmark_das
+      add_bookmark_google
 
       within page.first('.bookmark') do
         click_button 'Add Tag'

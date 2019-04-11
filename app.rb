@@ -18,7 +18,7 @@ class BookmarkManager < Sinatra::Base
 
   get '/bookmarks' do
     @user = User.find(id: session[:user_id])
-    @bookmarks = Bookmark.all
+    @bookmarks = Bookmark.all(user_id: session[:user_id])
     erb :'bookmarks/index'
   end
 
@@ -27,7 +27,7 @@ class BookmarkManager < Sinatra::Base
   end
 
   post '/bookmarks' do
-    unless Bookmark.create(url: params[:url], title: params[:title])
+    unless Bookmark.create(url: params[:url], title: params[:title], user_id: session[:user_id])
       flash[:notice] = "You must submit a valid URL."
     else
       flash[:notice] = 'Bookmark Added.'
@@ -49,7 +49,7 @@ class BookmarkManager < Sinatra::Base
   end
 
   patch '/bookmarks/:id' do
-    Bookmark.update(id: params[:id], title: params[:title], url: params[:url])
+    Bookmark.update(id: params[:id], title: params[:title], url: params[:url], user_id: session[:user_id])
     flash[:notice] = 'Bookmark Changed.'
     redirect '/bookmarks'
   end

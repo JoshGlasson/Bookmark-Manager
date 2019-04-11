@@ -30,7 +30,7 @@ describe Tag do
 
   describe '.where' do
     it 'returns tags linked to the given bookmark id' do
-      bookmark = Bookmark.create(url: "http://www.makersacademy.com", title: "Makers Academy")
+      bookmark = Bookmark.create(url: "http://www.makersacademy.com", title: "Makers Academy", user_id: 1)
       tag1 = Tag.create(content: 'test tag 1')
       tag2 = Tag.create(content: 'test tag 2')
       BookmarkTag.create(bookmark_id: bookmark.id, tag_id: tag1.id)
