@@ -20,7 +20,7 @@ class Bookmark
     else
       connection = PG.connect(dbname: 'bookmark_manager')
     end
-    bookmarks = DatabaseConnection.query("SELECT * FROM bookmarks WHERE user_id = '#{user_id}'")
+    bookmarks = DatabaseConnection.query("SELECT * FROM bookmarks WHERE user_id = '#{user_id}' ORDER BY id")
     bookmarks.map do |bookmark|
       Bookmark.new(
         url: bookmark['url'],
