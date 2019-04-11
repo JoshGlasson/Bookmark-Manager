@@ -1,11 +1,9 @@
 feature 'Adding a new bookmark' do
   scenario 'A user can add a new bookmark to Bookmark Manager' do
     sign_up
-    visit('/bookmarks/new')
-    fill_in('url', with:'http://www.testbookmark.com')
-    fill_in('title', with: 'Test Bookmark')
-    click_button 'Submit'
-    expect(page).to have_link('Test Bookmark', href: 'http://www.testbookmark.com')
+    click_button 'Bookmarks'
+    add_bookmark_makers
+    expect(page).to have_link('Makers Academy', href: 'http://www.makersacademy.com')
   end
 
   scenario 'The bookmark must be a valid url' do
